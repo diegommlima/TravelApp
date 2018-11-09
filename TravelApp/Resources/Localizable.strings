@@ -1,0 +1,38 @@
+//
+//  LocalizableStrings
+//  TravelApp
+//
+//  Created by Diego Lima on 07/06/18.
+//  Copyright © 2018 Diego Lima. All rights reserved.
+//
+
+//General
+"navBackAccessibilityLabel" = "voltar";
+
+// HomeSearch
+"homeSearchIATAOrigin" = "IATA Origem";
+"homeSearchIATADestination" = "IATA Destino";
+"homeSearchDateOfTheTrip" = "Data da ida";
+"homeSearchLapDate" = "Data da volta";
+"homeSearchNumberOfPassengers" = "Quantidade de passageiros";
+"homeSearchSearchTicket" = "Pesquisar passagem";
+"homeSearchRequiredFieldErrorMessage" = "campo obrigatório";
+"homeSearchInvalidIATACodeErrorMessage" = "código IATA inválido";
+"homeSearchInvalidDateFormatErrorMessage" = "data inválida";
+"homeSearchInvalidDateFormatErrorMessage" = "data inválida";
+"homeSearchInvalidNumberOfPassengersErrorMessage" = "número de passageiros deve ser entre 1-9";
+
+// SearchResult
+"searchResultTitle" = "Pesquisar passagem";
+"searchResultAirline" = "Cia Aérea";
+"searchResultDepart" = "Partida";
+"searchResultDuration" = "Duração";
+"searchResultArrival" = "Chegada";
+"searchResultFilter" = "Filtrar";
+"searchResultOrder" = "Ordenar";
+"searchResultBuy" = "Comprar";
+"searchResultGoing" = "Ida";
+"searchResultBack" = "Volta";
+"searchResultDirectFlight" = "Voo direto";
+"searchResultEmptyStateMessage" = "Sua pesquisa não retornou resultados.";
+"searchResultStopOver" = "escala";

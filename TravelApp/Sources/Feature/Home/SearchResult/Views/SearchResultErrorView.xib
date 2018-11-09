@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SearchResultErrorView" customModule="MaxMilhas" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="541"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ie2-aB-WMn">
+                    <rect key="frame" x="16" y="60" width="328" height="270.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-Yq-onK">
+                    <rect key="frame" x="16" y="346.5" width="328" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Os3-5k-gB1"/>
+                    </constraints>
+                    <connections>
+                        <action selector="didTouchToTryAgain:" destination="iN0-l3-epB" eventType="touchUpInside" id="ojE-n2-RCP"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ie2-aB-WMn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="1Xz-F7-T8S"/>
+                <constraint firstItem="J3t-Yq-onK" firstAttribute="width" secondItem="ie2-aB-WMn" secondAttribute="width" id="5bD-wG-p4X"/>
+                <constraint firstItem="J3t-Yq-onK" firstAttribute="top" secondItem="ie2-aB-WMn" secondAttribute="bottom" constant="16" id="5qq-Jl-slG"/>
+                <constraint firstItem="ie2-aB-WMn" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="64H-f2-uRp"/>
+                <constraint firstItem="J3t-Yq-onK" firstAttribute="centerX" secondItem="ie2-aB-WMn" secondAttribute="centerX" id="RTn-3D-8IG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ie2-aB-WMn" secondAttribute="trailing" constant="16" id="TRP-kd-5Bh"/>
+                <constraint firstItem="ie2-aB-WMn" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="fjE-Hb-Ll4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="errorButton" destination="J3t-Yq-onK" id="pz7-Ky-f3y"/>
+                <outlet property="messageLabel" destination="ie2-aB-WMn" id="9rM-lK-5qh"/>
+            </connections>
+            <point key="canvasLocation" x="26" y="116.5"/>
+        </view>
+    </objects>
+</document>
