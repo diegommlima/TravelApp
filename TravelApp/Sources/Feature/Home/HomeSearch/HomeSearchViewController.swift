@@ -109,13 +109,13 @@ class HomeSearchViewController: UIViewController, Identifiable {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.setTopazStyle()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     // MARK: - Action Methods
@@ -168,7 +168,7 @@ class HomeSearchViewController: UIViewController, Identifiable {
     
     @objc private func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
-        if let kbRect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+        if let kbRect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: kbRect.size.height, right: 0)
             self.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbRect.size.height, right: 0)
         }

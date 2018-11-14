@@ -134,7 +134,7 @@ class SearchResultOfTicketsViewController: UIViewController, Identifiable {
     }
     
     private func showLoading() {
-        let loading = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let loading = UIActivityIndicatorView(style: .gray)
         loading.startAnimating()
         loading.frame = tableView.bounds
         tableView.backgroundView = loading

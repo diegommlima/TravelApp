@@ -37,15 +37,15 @@ class CustomTextField: UITextField {
     //MARK: - Override
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, contentPadding)
+        return bounds.inset(by: contentPadding)
     }
     
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, contentPadding)
+        return bounds.inset(by: contentPadding)
     }
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, contentPadding)
+        return bounds.inset(by: contentPadding)
     }
     
     //MARK: - Public Methods

@@ -13,8 +13,8 @@ extension UIButton {
     func applyCustomAppearance() {
         titleLabel?.font = UIFont.appTextStyle5
         tintColor = UIColor.appWhiteTwo
-        imageEdgeInsets = UIEdgeInsetsMake(4, 0, 0, 16)
-        titleEdgeInsets = UIEdgeInsetsMake(4, 0, 0, 0)
+        imageEdgeInsets = UIEdgeInsets.init(top: 4, left: 0, bottom: 0, right: 16)
+        titleEdgeInsets = UIEdgeInsets.init(top: 4, left: 0, bottom: 0, right: 0)
         layer.cornerRadius = 4.0
         layer.backgroundColor = UIColor.appTopaz.cgColor
         layer.shadowColor = UIColor.appBlueGreen.cgColor

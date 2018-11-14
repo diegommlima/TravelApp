@@ -14,7 +14,7 @@ extension UINavigationBar {
         isTranslucent = false
         shadowImage = UIImage()
         setBackgroundImage(UIImage(named: "navBarTopaz")?.resizableImage(withCapInsets: .zero, resizingMode: .stretch), for: .default)
-        titleTextAttributes = [NSAttributedStringKey.font: UIFont.appTextStyle5,
-                               NSAttributedStringKey.foregroundColor: UIColor.appWhiteTwo]
+        titleTextAttributes = [NSAttributedString.Key.font: UIFont.appTextStyle5,
+                               NSAttributedString.Key.foregroundColor: UIColor.appWhiteTwo]
     }
 }
