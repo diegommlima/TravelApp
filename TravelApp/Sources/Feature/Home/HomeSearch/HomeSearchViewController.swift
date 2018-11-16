@@ -160,8 +160,6 @@ class HomeSearchViewController: UIViewController, Identifiable {
     
     private func setupView() {
         let logo = UIImageView(image: UIImage(named: "AirplaneNavTitle"))
-//        logo.contentMode = .scaleAspectFill
-//        logo.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         navigationItem.titleView = logo
         title = "Home"
     }

@@ -17,7 +17,6 @@ class SearchResultUITests: BaseXCTestCase {
         
         HomeSearchUITests.skipHome(app)
         SearchResultSteps.waitScreen(testCase: self)
-
     }
     
     // MARK: - Tests
@@ -27,6 +26,8 @@ class SearchResultUITests: BaseXCTestCase {
         let filterButton = SearchResultSteps.filterButton()
         let orderButton = SearchResultSteps.orderButton()
 
+        verifySnapshotView()
+        
         XCTAssert(filterButton.exists)
         XCTAssert(orderButton.exists)
     }

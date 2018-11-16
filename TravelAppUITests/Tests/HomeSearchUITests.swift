@@ -26,6 +26,8 @@ class HomeSearchUITests: BaseXCTestCase {
         let numberOFPassengersTextField = HomeSearchSteps.numberOFPassengersTextField()
         let searchTicketButton = HomeSearchSteps.searchTicketButton()
         
+        verifySnapshotView(identifier: "before")
+
         originTextField.tap()
         originTextField.typeText("gyn")
         
@@ -49,6 +51,8 @@ class HomeSearchUITests: BaseXCTestCase {
         
         let button = app.buttons["ToolbarDoneButton"]
         button.tap()
+        
+        verifySnapshotView(delay: 0.5)
         
         searchTicketButton.tap()
         let label = app.navigationBars["PESQUISAR PASSAGEM"]

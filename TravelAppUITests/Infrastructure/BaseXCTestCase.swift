@@ -8,8 +8,9 @@
 
 import XCTest
 @testable import TravelApp
+import FBSnapshotTestCase
 
-class BaseXCTestCase: XCTestCase {
+class BaseXCTestCase: FBSnapshotTestCase {
     // MARK: - Constants
     
     let app = XCUIApplication()
@@ -25,10 +26,17 @@ class BaseXCTestCase: XCTestCase {
         // Get this argument on AppDelegate didFinishLaunchWithArguments to erease stored data. It will allow us to test as first user in each test in iOS 9 and 10.
         app.launchArguments = ["START_FROM_CLEAN_STATE"]
         app.launch()
+//        recordMode = true;
     }
     
-    override func tearDown() {
-        
-        super.tearDown()
+    func verifySnapshotView(delay: TimeInterval = 0, removeStatusBarTime: Bool = true, tolerance: CGFloat = 0, identifier: String = "", file: StaticString = #file, line: UInt = #line) {
+        if delay != 0 {
+            wait(for: delay)
+        }
+        var image: UIImage? = app.screenshot().image
+        if removeStatusBarTime {
+            image = image?.removingStatusBarTime
+        }
+        FBSnapshotVerifyView(UIImageView(image: image), identifier: identifier, tolerance: tolerance, file: file, line: line)
     }
 }
