@@ -9,6 +9,7 @@
 import XCTest
 
 class HomeSearchUITests: BaseXCTestCase {
+        
     // MARK: - Overrides
     
     override func setUp() {
@@ -19,6 +20,7 @@ class HomeSearchUITests: BaseXCTestCase {
     // MARK: - Tests
     
     func testFillFormWithSuccess() {
+                
         let originTextField = HomeSearchSteps.originTextField()
         let destinationTextField = HomeSearchSteps.destinationTextField()
         let dateOfTheTripTextField = HomeSearchSteps.dateOfTheTripTextField()

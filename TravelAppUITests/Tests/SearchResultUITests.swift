@@ -10,25 +10,24 @@ import XCTest
 
 class SearchResultUITests: BaseXCTestCase {
     
-    // MARK: - Overrides
-    
-    override func setUp() {
-        super.setUp()
-        
-        HomeSearchUITests.skipHome(app)
-        SearchResultSteps.waitScreen(testCase: self)
-    }
-    
     // MARK: - Tests
     
     func testBottomButtons() {
-        
+        dynamicStubs.setupStub(url: "/api/search/", fileName: "SearchFlightSuccess")
+        loadInitialState()
+
         let filterButton = SearchResultSteps.filterButton()
         let orderButton = SearchResultSteps.orderButton()
 
-        verifySnapshotView()
+        verifySnapshotView(delay: 4)
         
         XCTAssert(filterButton.exists)
         XCTAssert(orderButton.exists)
+    }
+    
+    private func loadInitialState() {
+        
+        HomeSearchUITests.skipHome(app)
+        SearchResultSteps.waitScreen(testCase: self)
     }
 }

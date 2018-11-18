@@ -13,7 +13,7 @@ class SearchRequest: SearchRequestProtocol {
     
     // MARK: - Constants
     
-    private let apiSearchEndpoint = "/api/search/"
+    private let apiSearchEndpoint = "/api/search"
     
     // MARK: - Properties
     

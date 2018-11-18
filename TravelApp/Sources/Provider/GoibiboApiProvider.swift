@@ -12,10 +12,12 @@ struct GoibiboApiProvider {
     
     static let appID = "04b76e21"
     static let appKey = "fadc0a120521b900ba893016c766c83f"
+    private var baseURL: String = {
+        return ProcessInfo.processInfo.environment["BASEURL"] ?? "http://developer.goibibo.com"
+    }()
+    
     let networking: NetworkProtocol
     
-    private let baseURL = "http://developer.goibibo.com"
-
     init(networking networkingProtocol: NetworkProtocol? = nil) {
         if let networking = networkingProtocol {
             self.networking = networking
@@ -23,7 +25,7 @@ struct GoibiboApiProvider {
             let urlSession = URLSession(configuration: .ephemeral,
                                         delegate: nil,
                                         delegateQueue: nil)
-            self.networking = NetworkProvider(session: urlSession, baseURL: baseURL)
+            self.networking = NetworkProvider(session: urlSession, baseURL: self.baseURL)
         }
     }
 }
