@@ -14,13 +14,12 @@ class BaseXCTestCase: FBSnapshotTestCase {
     // MARK: - Constants
     
     let app = XCUIApplication()
-    let dynamicStubs = HTTPDynamicStubs()
 
     // MARK: - Overrides
     
     override func setUp() {
         super.setUp()
-        dynamicStubs.setUp()
+        HTTPDynamicStubs.shared.setUp()
 
         XCUIDevice.shared.orientation = .portrait
         // In UI tests it is usually best to stop immediately when a failure occurs.
@@ -34,7 +33,7 @@ class BaseXCTestCase: FBSnapshotTestCase {
     
     override func tearDown() {
         super.tearDown()
-        dynamicStubs.tearDown()
+        HTTPDynamicStubs.shared.tearDown()
     }
     
     func verifySnapshotView(delay: TimeInterval = 0, removeStatusBarTime: Bool = true, tolerance: CGFloat = 0, identifier: String = "", file: StaticString = #file, line: UInt = #line) {
