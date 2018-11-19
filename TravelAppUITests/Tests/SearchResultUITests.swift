@@ -26,7 +26,7 @@ class SearchResultUITests: BaseXCTestCase {
         let filterButton = SearchResultSteps.filterButton()
         let orderButton = SearchResultSteps.orderButton()
 
-        verifySnapshotView()
+        verifySnapshotView(delay: 0.5)
         
         XCTAssert(filterButton.exists)
         XCTAssert(orderButton.exists)
