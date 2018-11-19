@@ -27,21 +27,18 @@ class HTTPDynamicStubs {
         server.stop()
     }
     
-    public func setupStub(url: String, fileName: String, method: HTTPMethod = .GET, file: StaticString = #file, line: UInt = #line) {
+    public func setupStub(url: String, fileName: String, delay: TimeInterval = 0, method: HTTPMethod = .GET, file: StaticString = #file, line: UInt = #line) {
         
         guard let data = LocalJsonReader.retrieveData(fromFile: fileName) else {
             XCTFail("erro", file: file, line: line)
             return
         }
-//        let testBundle = Bundle(for: type(of: self))
-//        let filePath = testBundle.path(forResource: filename, ofType: "json")
-//        let fileUrl = URL(fileURLWithPath: filePath!)
-//        let data = try! Data(contentsOf: fileUrl, options: .uncached)
-        // Looking for a file and converting it to JSON
+
         let json = dataToJSON(data: data)
         
         // Swifter makes it very easy to create stubbed responses
         let response: ((HttpRequest) -> HttpResponse) = { _ in
+            Thread.sleep(forTimeInterval: delay)
             return HttpResponse.ok(.json(json as AnyObject))
         }
         

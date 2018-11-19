@@ -4,17 +4,21 @@ PODS:
   - iOSSnapshotTestCase/Core (4.0.0)
   - iOSSnapshotTestCase/SwiftSupport (4.0.0):
     - iOSSnapshotTestCase/Core
+  - Swifter (1.4.5)
 
 DEPENDENCIES:
   - iOSSnapshotTestCase
+  - Swifter (~> 1.4.5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - iOSSnapshotTestCase
+    - Swifter
 
 SPEC CHECKSUMS:
   iOSSnapshotTestCase: 711379b19f69a22c131527df862352c877c2773c
+  Swifter: eb2bc1d192a1c09169c7fefd01971565fa940521
 
-PODFILE CHECKSUM: e7599a4ae9de57a4128e204fc26e3922de757a2b
+PODFILE CHECKSUM: 3150539db7fbdac240904b81844b6415fdbf76ff
 
 COCOAPODS: 1.5.3
