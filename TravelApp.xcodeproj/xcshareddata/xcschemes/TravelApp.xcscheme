@@ -20,6 +20,20 @@
                ReferencedContainer = "container:TravelApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E5F3D9C121481D0800087A1E"
+               BuildableName = "TravelAppUITests.xctest"
+               BlueprintName = "TravelAppUITests"
+               ReferencedContainer = "container:TravelApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -35,16 +49,6 @@
                BlueprintIdentifier = "85B57E9F2142D8E200581CA8"
                BuildableName = "TravelAppTests.xctest"
                BlueprintName = "TravelAppTests"
-               ReferencedContainer = "container:TravelApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5F3D9C121481D0800087A1E"
-               BuildableName = "TravelAppUITests.xctest"
-               BlueprintName = "TravelAppUITests"
                ReferencedContainer = "container:TravelApp.xcodeproj">
             </BuildableReference>
          </TestableReference>

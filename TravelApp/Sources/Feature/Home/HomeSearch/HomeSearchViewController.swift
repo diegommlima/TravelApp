@@ -173,9 +173,12 @@ class HomeSearchViewController: UIViewController, Identifiable {
     }
     
     @objc private func keyboardWillHide(notification: Notification) {
-        UIView.animate(withDuration: CATransaction.animationDuration()) {
-            self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            self.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        UIView.animate(withDuration: CATransaction.animationDuration()
+            , animations: {
+                self.scrollView.contentInset = .zero
+                self.scrollView.scrollIndicatorInsets = .zero
+        }) { _ in
+            self.scrollView.contentOffset = .zero
         }
     }
 }

@@ -54,8 +54,8 @@ class HomeSearchUITests: BaseXCTestCase {
         let button = app.buttons["ToolbarDoneButton"]
         button.tap()
         
-        verifySnapshotView(delay: 1)
-        
+        verifySnapshotView(delay: 0.5)
+
         searchTicketButton.tap()
         let label = app.navigationBars["PESQUISAR PASSAGEM"]
         XCTAssert(label.exists)

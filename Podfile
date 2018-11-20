@@ -15,7 +15,7 @@ target 'TravelApp' do
   target 'TravelAppUITests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'iOSSnapshotTestCase'
+    pod 'iOSSnapshotTestCase', :git => 'https://github.com/uber/ios-snapshot-test-case.git'
     pod 'Swifter', '~> 1.4.5'
   end
 
