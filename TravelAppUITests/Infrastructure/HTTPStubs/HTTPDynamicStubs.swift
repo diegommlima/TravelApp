@@ -33,29 +33,22 @@ class HTTPDynamicStubs {
         server.stop()
     }
 
-    public func setupStub(models: [HTTPStubInfo], file: StaticString = #file, line: UInt = #line) {
+    public func setupStub(_ stubModel: HTTPStubInfo, file: StaticString = #file, line: UInt = #line) {
         
-        let model = models.first!
-        
-        guard let data = LocalJsonReader.retrieveData(fromFile: model.jsonFilename) else {
-            XCTFail("erro", file: file, line: line)
+        guard let data = LocalJsonReader.retrieveData(fromFile: stubModel.jsonFilename) else {
+            XCTFail("Json cannot be retrieved", file: file, line: line)
             return
         }
-        
-        let json = dataToJSON(data: data)
-        
-        // Swifter makes it very easy to create stubbed responses
+        let json = self.dataToJSON(data: data, file: file, line: line)
+
         let response: ((HttpRequest) -> HttpResponse) = { request in
-            //            guard parameter != nil, request.queryParams.contains(where: { $0 == parameter! }) else {
-            //                return HttpResponse.notFound
-            //            }
-            Thread.sleep(forTimeInterval: model.delay)
+            Thread.sleep(forTimeInterval: stubModel.delay)
             return HttpResponse.ok(.json(json as AnyObject))
         }
         
-        switch model.method  {
-        case .GET : server.GET[model.url] = response
-        case .POST: server.POST[model.url] = response
+        switch stubModel.method  {
+        case .GET : server.GET[stubModel.url] = response
+        case .POST: server.POST[stubModel.url] = response
         }
     }
     
@@ -68,10 +61,11 @@ class HTTPDynamicStubs {
         return httpStub
     }()
     
-    private func dataToJSON(data: Data) -> Any? {
+    private func dataToJSON(data: Data, file: StaticString = #file, line: UInt = #line) -> Any? {
         do {
             return try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
         } catch let myJSONError {
+            XCTFail("Json cannot be parsed", file: file, line: line)
             print(myJSONError)
         }
         return nil
@@ -83,14 +77,12 @@ struct HTTPStubInfo {
     let jsonFilename: String
     let delay: TimeInterval
     let method: HTTPMethod
-    let queryParameter: String?
     
-    init(url: String, jsonFileName: String, delay: TimeInterval = 0, method: HTTPMethod = .GET, queryParameter: String? = nil) {
+    init(url: String, jsonFileName: String, delay: TimeInterval = 0, method: HTTPMethod = .GET) {
         self.url = url
         self.jsonFilename = jsonFileName
         self.delay = delay
         self.method = method
-        self.queryParameter = queryParameter
     }
 }
 

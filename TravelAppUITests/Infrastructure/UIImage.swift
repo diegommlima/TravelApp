@@ -17,7 +17,7 @@ extension UIImage {
         guard let context = UIGraphicsGetCurrentContext() else { return nil }
         draw(at: .zero)
         
-        //TODO: Needs to be adapted to new Screens (ex. IphoneX)
+        //TODO: Needs to be adapted to new Screens (ex.: IphoneX)
         let rectangle = CGRect(x: imageSize.width/4, y: 0, width: (imageSize.width/4)*3, height: UIApplication.shared.statusBarFrame.size.height)
         
         context.setFillColor(UIColor.black.cgColor)

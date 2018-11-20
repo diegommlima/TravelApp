@@ -38,7 +38,7 @@ class BaseXCTestCase: FBSnapshotTestCase {
     
     func verifySnapshotView(delay: TimeInterval = 0, removeStatusBarTime: Bool = true, tolerance: CGFloat = 0, identifier: String = "", file: StaticString = #file, line: UInt = #line) {
         if delay != 0 {
-            wait(for: delay)
+            Thread.sleep(forTimeInterval: delay)
         }
         var image: UIImage? = app.screenshot().image
         if removeStatusBarTime {
