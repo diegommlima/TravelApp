@@ -14,19 +14,18 @@ class BaseXCTestCase: FBSnapshotTestCase {
     // MARK: - Constants
     
     let app = XCUIApplication()
-
+    
     // MARK: - Overrides
     
     override func setUp() {
         super.setUp()
         HTTPDynamicStubs.shared.setUp()
-
+        
         XCUIDevice.shared.orientation = .portrait
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = true
         // Get this argument on AppDelegate didFinishLaunchWithArguments to erease stored data. It will allow us to test as first user in each test in iOS 9 and 10.
         app.launchEnvironment = ["BASEURL" : "http://localhost:8080"]
-        app.launchArguments = ["START_FROM_CLEAN_STATE"]
         app.launch()
 //        recordMode = true;
     }

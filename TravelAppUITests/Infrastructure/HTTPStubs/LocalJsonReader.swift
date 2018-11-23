@@ -15,8 +15,12 @@ class LocalJsonReader {
     
     // MARK: - Public Functions
     
-    static func retrieveData(fromFile name: String) -> Data? {
+    static func retrieveData(fromFile name: String?) -> Data? {
         let bundle = Bundle(for: type(of: LocalJsonReader()))
+        
+        guard let name = name else {
+            return nil
+        }
         
         guard let pathString = bundle.path(forResource: name, ofType: jsonExtension) else {
             return nil

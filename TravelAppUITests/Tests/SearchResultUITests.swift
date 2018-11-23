@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Swifter
 
 class SearchResultUITests: BaseXCTestCase {
     
@@ -14,23 +15,20 @@ class SearchResultUITests: BaseXCTestCase {
     
     func testBottomButtons() {
         
-        let httpStub = HTTPStubInfo(url: "/api/search?format=json", jsonFileName: "SearchFlightSuccess", delay: 1)
+        let httpStub = HTTPStubInfo(url: "/api/search", jsonFileName: "SearchFlightSuccess", delay: 1)
         HTTPDynamicStubs.shared.setupStub(httpStub)
         
         loadInitialState()
 
         verifySnapshotView(tolerance: 0.001, identifier: "loading")
-
-        let filterButton = SearchResultSteps.filterButton()
-        let orderButton = SearchResultSteps.orderButton()
-
         verifySnapshotView(delay: 1.5, identifier: "loaded")
-        
-        XCTAssert(filterButton.exists)
-        XCTAssert(orderButton.exists)
     }
     
     func testErrorView() {
+        
+        let httpStub = HTTPStubInfo(url: "/api/search")
+        HTTPDynamicStubs.shared.setupStub(httpStub, httpRespose: HttpResponse.internalServerError)
+        
         loadInitialState()
         
         verifySnapshotView(delay: 1, identifier: "error")

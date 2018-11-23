@@ -32,18 +32,26 @@ class HTTPDynamicStubs {
     public func tearDown() {
         server.stop()
     }
-
-    public func setupStub(_ stubModel: HTTPStubInfo, file: StaticString = #file, line: UInt = #line) {
+    
+    public func setupStub(_ stubModel: HTTPStubInfo, httpRespose: HttpResponse? = nil, file: StaticString = #file, line: UInt = #line) {
         
-        guard let data = LocalJsonReader.retrieveData(fromFile: stubModel.jsonFilename) else {
-            XCTFail("Json cannot be retrieved", file: file, line: line)
-            return
-        }
-        let json = self.dataToJSON(data: data, file: file, line: line)
-
-        let response: ((HttpRequest) -> HttpResponse) = { request in
-            Thread.sleep(forTimeInterval: stubModel.delay)
-            return HttpResponse.ok(.json(json as AnyObject))
+        var response: ((HttpRequest) -> HttpResponse)
+        if let httpRespose = httpRespose {
+            response = { request in
+                Thread.sleep(forTimeInterval: stubModel.delay)
+                return httpRespose
+            }
+        } else {
+            guard let data = LocalJsonReader.retrieveData(fromFile: stubModel.jsonFilename) else {
+                XCTFail("Json cannot be retrieved", file: file, line: line)
+                return
+            }
+            let json = self.dataToJSON(data: data, file: file, line: line)
+            
+            response = { request in
+                Thread.sleep(forTimeInterval: stubModel.delay)
+                return HttpResponse.ok(.json(json as AnyObject))
+            }
         }
         
         switch stubModel.method  {
@@ -65,8 +73,7 @@ class HTTPDynamicStubs {
         do {
             return try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
         } catch let myJSONError {
-            XCTFail("Json cannot be parsed", file: file, line: line)
-            print(myJSONError)
+            XCTFail("Json cannot be parsed error: \(myJSONError)", file: file, line: line)
         }
         return nil
     }
@@ -74,15 +81,14 @@ class HTTPDynamicStubs {
 
 struct HTTPStubInfo {
     let url: String
-    let jsonFilename: String
+    let jsonFilename: String?
     let delay: TimeInterval
     let method: HTTPMethod
     
-    init(url: String, jsonFileName: String, delay: TimeInterval = 0, method: HTTPMethod = .GET) {
+    init(url: String, jsonFileName: String? = nil, delay: TimeInterval = 0, method: HTTPMethod = .GET) {
         self.url = url
         self.jsonFilename = jsonFileName
         self.delay = delay
         self.method = method
     }
 }
-

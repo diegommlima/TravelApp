@@ -37,14 +37,14 @@ class HomeSearchUITests: BaseXCTestCase {
         destinationTextField.typeText("rvd")
         
         dateOfTheTripTextField.tap()
-        app.datePickers.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: "20")
         app.datePickers.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: "dezembro")
+        app.datePickers.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: "20")
         app.datePickers.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: "2018")
         XCTAssertEqual("20/12/2018", dateOfTheTripTextField.value as! String)
         
         lapDateTextField.tap()
-        app.datePickers.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: "25")
         app.datePickers.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: "dezembro")
+        app.datePickers.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: "25")
         app.datePickers.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: "2018")
         XCTAssertEqual("25/12/2018", lapDateTextField.value as! String)
 
@@ -94,4 +94,3 @@ class HomeSearchUITests: BaseXCTestCase {
         searchTicketButton.tap()
     }
 }
-
